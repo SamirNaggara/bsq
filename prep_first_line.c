@@ -6,7 +6,7 @@
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 17:41:47 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/30 18:49:14 by nveerara         ###   ########.fr       */
+/*   Updated: 2022/08/30 20:56:47 by nveerara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	array_first_line(t_bsq *bsq)
 {
 	int	i;
 
-	bsq->first_line = malloc(sizeof(char) * bsq->fl_c);	
+	bsq->first_line = malloc(sizeof(char) * bsq->fl_c);
 	if (bsq->fl_c < 4)
 		return (1);
 	bsq->fl_l = bsq->fl_lo;

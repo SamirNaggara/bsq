@@ -6,7 +6,7 @@
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 13:04:10 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/29 15:28:19 by nveerara         ###   ########.fr       */
+/*   Updated: 2022/08/30 20:55:49 by nveerara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ void	add_empt_empty(t_bsq *bsq)
 		bsq->bml = bsq->pbml->next;
 		bsq->bml->empt_start = bsq->i;
 		bsq->bml->next = NULL;
-	}
-	
+	}	
 }
 
 void	add_empt_obst(t_bsq *bsq)

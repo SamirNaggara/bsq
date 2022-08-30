@@ -6,7 +6,7 @@
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 13:04:42 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/30 20:22:43 by nveerara         ###   ########.fr       */
+/*   Updated: 2022/08/30 20:53:06 by nveerara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,11 @@ void	init_bm(t_bsq *bsq);
 void	dellmem(t_lmem *start);
 void	delallprev(t_mem *bm);
 void	check_bsq(t_bsq *bsq);
-int	read_lines(t_bsq *bsq);
+int		read_lines(t_bsq *bsq);
 void	read_file(char *av);
-int	read_first_line_char(t_bsq *bsq);
-int	read_first_line_lines(t_bsq *bsq);
-int	read_first_line_lsize(t_bsq *bsq);
+int		read_first_line_char(t_bsq *bsq);
+int		read_first_line_lines(t_bsq *bsq);
+int		read_first_line_lsize(t_bsq *bsq);
 void	reduce(t_bsq *bsq, t_mem *bmo, t_mem *bm, int lc);
 void	init_new_line(t_bsq *bsq);
 void	print_error(void);
@@ -98,18 +98,11 @@ void	init_bsq_write(t_bsq *bsq);
 void	write_bsq(t_bsq *bsq);
 void	write_bsq_buf(t_bsq *bsq);
 void	read_first_line(t_bsq *bsq);
-int	array_first_line(t_bsq *bsq);
+int		array_first_line(t_bsq *bsq);
 void	add_char(t_bsq *bsq, char c);
-int	read_end_fl(t_bsq *bsq);
-int	end_check(t_bsq *bsq);
+int		read_end_fl(t_bsq *bsq);
+int		end_check(t_bsq *bsq);
 void	read_stdin(void);
-
-
-
-
-int		end_test(t_bsq *bsq);
-void	print_tlmem(t_lmem *up);
-
 
 extern void	((*g_write_bsq[2])(t_bsq *bsq));
 extern int	((*g_read_bsq[7])(t_bsq *bsq));

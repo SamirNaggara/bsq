@@ -6,7 +6,7 @@
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 15:28:59 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/30 20:17:31 by nveerara         ###   ########.fr       */
+/*   Updated: 2022/08/30 20:55:30 by nveerara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	init_bsq(t_bsq *bsq)
 	bsq->bsq[0] = -1;
 	bsq->bsq[1] = -1;
 	bsq->first_line = NULL;
-	bsq->fl_lo =NULL;
+	bsq->fl_lo = NULL;
 	bsq->bm = NULL;
 	bsq->pbml = NULL;
 	bsq->bml = NULL;

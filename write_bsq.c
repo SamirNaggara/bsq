@@ -6,7 +6,7 @@
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 12:48:59 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/30 19:42:07 by nveerara         ###   ########.fr       */
+/*   Updated: 2022/08/30 20:54:17 by nveerara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,41 +29,6 @@ void	write_sqr(t_bsq *bsq, int n)
 {
 	write(1, bsq->sqr_lc, n);
 }
-/*
-void	write_bsq_buf(t_bsq *bsq)
-{
-	while (bsq->bi < bsq->ret)
-	{
-		if ((bsq->l + (bsq->i + bsq->ret)/ bsq->lsize <= bsq->bsq[1]))
-		{
-			if (bsq->l + (bsq->i + bsq->ret) / bsq->lsize == bsq->bsq[1] &&
-			bsq->bsq[0] <= (bsq->i + bsq->ret) % bsq->lsize)
-			{
-				if (bsq->size > (bsq->i + bsq->ret) % bsq->lsize - bsq->bsq[0])
-				{
-					write(1, bsq->buf, bsq->ret - ((bsq->i + bsq->ret) % bsq->lsize
-									- bsq->bsq[0]));
-					write_sqr((bsq->i + bsq->ret) % bsq->lsize - bsq->bsq[0]);
-					bsq->bi = bsq->ret;
-				}
-				else
-				{
-					write(1, buf, bsq->ret - ((bsq->i + bsq->ret) % bsq->lsize - bsq->bsq[0] - bsq->bsqsize) - bsq->bsqsize);
-					write_sqr(bsq->size);
-					buf->bi += (bsq->ret - ((bsq->i + bsq->ret) % bsq->lsize - bsq->bsq[0] - bsq->bsqsize);
-					write(1, &bsq->buf[buf->bi], (bsq->i + bsq->ret) % bsq->lsize - bsq->bsq[0] - bsq->bsqsize);
-				}
-			}
-			else
-			{
-				write(1, bsq->buf, buf->ret);
-				bsq->bi = bsq->ret;
-			}
-		bsq->i = (bsq->i + bsq->ret) % bsq->lsize;
-		bsq->l += (bsq->i + bsq->re) / bsq->lsize;
-		}
-		else if (bsq->l + (bsq->i + bsq->ret) / bsq->lsize <= bsq->bsq[1] + bsq->bsqsize)
-		{*/
 
 void	read_first_line(t_bsq *bsq)
 {
@@ -78,6 +43,7 @@ void	read_first_line(t_bsq *bsq)
 		bsq->bi++;
 	}
 }
+
 void	write_bsq_buf(t_bsq *bsq)
 {
 	while (bsq->bi < bsq->ret)
@@ -97,16 +63,15 @@ void	write_bsq_buf(t_bsq *bsq)
 			bsq->l++;
 	}
 }
+
 void	write_bsq(t_bsq *bsq)
 {
 	init_bsq_write(bsq);
 	while (bsq->ret)
 	{
-	//	printf("test");
 		while (bsq->bi < bsq->ret)
 			g_write_bsq[bsq->step](bsq);
 		bsq->ret = read(bsq->fd, bsq->buf, BUFF_SIZE);
 		bsq->bi = 0;
 	}
-
 }

@@ -6,7 +6,7 @@
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 13:05:07 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/30 18:46:21 by nveerara         ###   ########.fr       */
+/*   Updated: 2022/08/30 20:57:10 by nveerara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	read_end_fl(t_bsq *bsq)
 
 int	read_first_line_lines(t_bsq *bsq)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < bsq->fl_c - 3)
