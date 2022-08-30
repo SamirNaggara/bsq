@@ -6,7 +6,7 @@
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 15:38:37 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/29 15:41:05 by nveerara         ###   ########.fr       */
+/*   Updated: 2022/08/30 19:20:51 by nveerara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ void	ft_putstr(char *str)
 
 void	print_error(void)
 {
-	ft_putstr("map error");
+	ft_putstr("map error\n");
 }

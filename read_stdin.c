@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_file.c                                        :+:      :+:    :+:   */
+/*   read_stdin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/29 13:03:10 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/30 20:28:58 by nveerara         ###   ########.fr       */
+/*   Created: 2022/08/30 20:16:06 by nveerara          #+#    #+#             */
+/*   Updated: 2022/08/30 20:50:13 by nveerara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
 
-void	end_read_first_test(t_bsq *bsq)
-{
-	printf("fill : %c empt : %c obst : %c lines : %d lsize : %d bsq x : %d bsq y : %d bsq size : %d\n", bsq->fill,
-	bsq->empt, bsq->obst, bsq->lines, bsq->lsize, bsq->bsq[0], bsq->bsq[1], bsq->bsqsize);
-}
-
-void	read_file(char *av)
+void	read_stdin(void)
 {
 	t_bsq	bsq;
 
 	init_bsq(&bsq);
-	bsq.fd = open(av, O_RDONLY);
-	if (bsq.fd == -1)
-	{
-		print_error();
-		return ;
-	}
+	bsq.fd = 0;
 	bsq.ret = read(bsq.fd, bsq.buf, BUFF_SIZE);
+	bsq.fdtmp = open("tmp", O_CREAT | O_RDWR, S_IRWXU);
 	while (bsq.ret)
 	{
+		write(bsq.fdtmp, bsq.buf, bsq.ret);
 		while (bsq.bi < bsq.ret)
 		{
 			if (g_read_bsq[bsq.step](&bsq))
@@ -48,8 +39,8 @@ void	read_file(char *av)
 		print_error();
 		return ;
 	}
-	close(bsq.fd);
-	bsq.fd = open(av, O_RDONLY);
+	close(bsq.fdtmp);
+	bsq.fd = open("tmp", O_RDONLY);
 	write_bsq(&bsq);
 	close(bsq.fd);
 }

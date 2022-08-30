@@ -6,7 +6,7 @@
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 13:03:20 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/30 12:42:36 by nveerara         ###   ########.fr       */
+/*   Updated: 2022/08/30 20:14:36 by nveerara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	read_lines(t_bsq *bsq)
 	{
 		if (bsq->buf[bsq->bi] != bsq->empt && bsq->buf[bsq->bi] != bsq->obst
 			&& bsq->buf[bsq->bi] != '\n')
-			return (0);
+			return (1);
 		if (bsq->buf[bsq->bi] == '\n')
 			return (read_lines_end(bsq));
 		if (bsq->buf[bsq->bi] == bsq->empt)
@@ -45,7 +45,14 @@ int	read_lines(t_bsq *bsq)
 		bsq->i++;
 		bsq->bi++;
 	}
-	if (bsq->ret == 0)
+	return (0);
+}
+
+int	end_check(t_bsq *bsq)
+{
+	if (bsq->bi < bsq->ret)
+		return (1);
+	if (bsq->bsq[0] == -1)
 		return (1);
 	return (0);
 }

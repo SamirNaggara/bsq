@@ -6,7 +6,7 @@
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 13:03:39 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/29 15:28:02 by nveerara         ###   ########.fr       */
+/*   Updated: 2022/08/30 20:34:57 by nveerara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ int	main(int ac, char **av)
 	int	i;
 
 	i = 1;
-//	if (ac == 1)
-//		read_stdin();
+	if (ac == 1)
+		read_stdin();
 	while (ac - i)
 	{
 		read_file(av[i]);
 		i++;
+		if (ac > 2)
+			write(1, "\n", 1);
 	}
 }

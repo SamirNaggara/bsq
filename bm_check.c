@@ -6,7 +6,7 @@
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 13:03:49 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/30 12:42:52 by nveerara         ###   ########.fr       */
+/*   Updated: 2022/08/30 19:25:42 by nveerara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	check_bsq(t_bsq *bsq)
 			lc++;
 		}
 	}
-	if (bsq->bsqsize < lc)
+	if (bm->start != NULL && bsq->bsqsize < lc)
 	{
 		bsq->bsqsize = lc;
 		bsq->bsq[0] = bm->start->empt_start;

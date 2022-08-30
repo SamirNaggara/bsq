@@ -6,7 +6,7 @@
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 12:48:59 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/30 17:19:55 by nveerara         ###   ########.fr       */
+/*   Updated: 2022/08/30 19:42:07 by nveerara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,7 @@ void	write_bsq_buf(t_bsq *bsq)
 		else
 			write(1, &bsq->buf[bsq->bi], 1);
 		bsq->bi++;
-		if (bsq->buf[bsq->bi] != '\n')
-			bsq->i = (bsq->i + 1) % bsq->lsize;
+		bsq->i = (bsq->i + 1) % (bsq->lsize + 1);
 		if (bsq->buf[bsq->bi] == '\n')
 			bsq->l++;
 	}
