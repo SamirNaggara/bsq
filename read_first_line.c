@@ -6,7 +6,7 @@
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 13:05:07 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/30 12:45:21 by nveerara         ###   ########.fr       */
+/*   Updated: 2022/08/30 18:46:21 by nveerara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,59 +14,48 @@
 
 int	read_first_line_char(t_bsq *bsq)
 {
-	if (bsq->i == 0)
+	bsq->empt = bsq->first_line[bsq->fl_c - 3];
+	bsq->obst = bsq->first_line[bsq->fl_c - 2];
+	bsq->fill = bsq->first_line[bsq->fl_c - 1];
+	if (bsq->obst == bsq->fill || bsq->fill == bsq->empt
+		|| bsq->empt == bsq->obst)
+		return (1);
+	bsq->step++;
+	init_bm(bsq);
+	return (0);
+}
+
+int	read_end_fl(t_bsq *bsq)
+{
+	while (bsq->bi < bsq->ret)
 	{
-		bsq->empt = bsq->buf[bsq->bi];
-		bsq->i++;
-		bsq->bi++;
-	}
-	if (bsq->i == 1 && bsq->bi < bsq->ret)
-	{
-		bsq->obst = bsq->buf[bsq->bi];
-		bsq->i++;
-		bsq->bi++;
-	}
-	if (bsq->i == 2 && bsq->bi < bsq->ret)
-	{
-		bsq->fill = bsq->buf[bsq->bi];
-		bsq->i++;
-		bsq->bi++;
-	}
-	if (bsq->i == 3)
-	{
-		if (bsq->obst == bsq->fill || bsq->fill == bsq->empt
-			|| bsq->empt == bsq->obst || bsq->buf[bsq->bi] != '\n'
-			|| bsq->obst == '\n' || bsq->empt == '\n' || bsq->fill == '\n')
-			return (1);
 		if (bsq->buf[bsq->bi] == '\n')
 		{
 			bsq->bi++;
 			bsq->step++;
-			init_bm(bsq);
+			return (0);
 		}
+		add_char(bsq, bsq->buf[bsq->bi]);
+		bsq->fl_c++;
+		bsq->bi++;
 	}
 	return (0);
 }
 
 int	read_first_line_lines(t_bsq *bsq)
 {
-	while (bsq->bi < bsq->ret)
+	int i;
+
+	i = 0;
+	while (i < bsq->fl_c - 3)
 	{
-		if (!('0' <= bsq->buf[bsq->bi] && bsq->buf[bsq->bi] <= '9'))
-		{
-			if (bsq->lines != 0)
-			{
-				bsq->i = 0;
-				bsq->step++;
-				return (0);
-			}
+		if (!('0' <= bsq->first_line[i] && bsq->first_line[i] <= '9'))
 			return (1);
-		}
 		bsq->lines *= 10;
-		bsq->lines += bsq->buf[bsq->bi] - '0';
-		bsq->bi++;
-		bsq->i++;
+		bsq->lines += bsq->first_line[i] - '0';
+		i++;
 	}
+	bsq->step++;
 	return (0);
 }
 

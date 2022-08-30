@@ -6,7 +6,7 @@
 #    By: nveerara <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/16 10:56:07 by nveerara          #+#    #+#              #
-#    Updated: 2022/08/29 15:56:58 by nveerara         ###   ########.fr        #
+#    Updated: 2022/08/30 18:44:10 by nveerara         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,9 @@ SRCS	=	BSQ.c \
 			reduce.c \
 			pointer_ft.c \
 			init.c \
-			error.c	
+			error.c	\
+			write_bsq.c \
+			prep_first_line.c
 
 INC		=	includes/
 

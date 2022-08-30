@@ -6,7 +6,7 @@
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 13:03:10 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/30 14:18:46 by nveerara         ###   ########.fr       */
+/*   Updated: 2022/08/30 18:50:20 by nveerara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	read_file(char *av)
 		bsq.bi = 0;
 	}
 	close(bsq.fd);
-	bsq->fd = open(av, O_RDONLY);
-//	write_bsq(bsq);
-	end_read_first_test(&bsq);
+	bsq.fd = open(av, O_RDONLY);
+	write_bsq(&bsq);
 }

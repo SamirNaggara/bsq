@@ -6,7 +6,7 @@
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 15:28:59 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/30 13:08:48 by nveerara         ###   ########.fr       */
+/*   Updated: 2022/08/30 18:47:27 by nveerara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ void	init_bsq(t_bsq *bsq, char *av)
 	bsq->lsize = 0;
 	bsq->bsqsize = 0;
 	bsq->bsq[0] = -1;
+	bsq->first_line = NULL;
+	bsq->fl_l = NULL;
+	bsq->fl_c = 0;
 }
 
 void	init_new_line(t_bsq *bsq)
@@ -55,5 +58,6 @@ void	init_bsq_write(t_bsq *bsq)
 	bsq->i = 0;
 	bsq->bi = 0;
 	bsq->l = 0;
+	bsq->step = 0;
 	bsq->ret = read(bsq->fd, bsq->buf, BUFF_SIZE);
 }
