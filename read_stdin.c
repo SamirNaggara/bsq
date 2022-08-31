@@ -6,11 +6,27 @@
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 20:16:06 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/30 20:50:13 by nveerara         ###   ########.fr       */
+/*   Updated: 2022/08/31 13:55:02 by nveerara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
+
+int	read_bsq_stdin(t_bsq *bsq)
+{
+	while (bsq->ret)
+	{
+		write(bsq->fdtmp, bsq->buf, bsq->ret);
+		while (bsq->bi < bsq->ret)
+		{
+			if (g_read_bsq[bsq->step](bsq))
+				return (1);
+		}
+		bsq->ret = read(bsq->fd, bsq->buf, BUFF_SIZE);
+		bsq->bi = 0;
+	}
+	return (0);
+}
 
 void	read_stdin(void)
 {
@@ -19,20 +35,11 @@ void	read_stdin(void)
 	init_bsq(&bsq);
 	bsq.fd = 0;
 	bsq.ret = read(bsq.fd, bsq.buf, BUFF_SIZE);
-	bsq.fdtmp = open("tmp", O_CREAT | O_RDWR, S_IRWXU);
-	while (bsq.ret)
+	bsq.fdtmp = open("tmp", O_CREAT | O_WRONLY | O_TRUNC, S_IRWXU);
+	if (read_bsq_stdin(&bsq))
 	{
-		write(bsq.fdtmp, bsq.buf, bsq.ret);
-		while (bsq.bi < bsq.ret)
-		{
-			if (g_read_bsq[bsq.step](&bsq))
-			{
-				print_error();
-				return ;
-			}
-		}
-		bsq.ret = read(bsq.fd, bsq.buf, BUFF_SIZE);
-		bsq.bi = 0;
+		print_error();
+		return ;
 	}
 	if (bsq.step != 6)
 	{

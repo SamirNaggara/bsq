@@ -6,7 +6,7 @@
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 13:03:49 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/30 19:25:42 by nveerara         ###   ########.fr       */
+/*   Updated: 2022/08/31 14:07:59 by nveerara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,16 @@ void	delallprev(t_mem *bm)
 	bm->prev = NULL;
 }
 
+void	check_bsq_end(t_bsq *bsq, t_mem *bm, int lc)
+{
+	if (bm->start != NULL && bsq->bsqsize < lc)
+	{
+		bsq->bsqsize = lc;
+		bsq->bsq[0] = bm->start->empt_start;
+		bsq->bsq[1] = bsq->l - lc;
+	}
+}
+
 void	check_bsq(t_bsq *bsq)
 {
 	int		lc;
@@ -68,10 +78,5 @@ void	check_bsq(t_bsq *bsq)
 			lc++;
 		}
 	}
-	if (bm->start != NULL && bsq->bsqsize < lc)
-	{
-		bsq->bsqsize = lc;
-		bsq->bsq[0] = bm->start->empt_start;
-		bsq->bsq[1] = bsq->l - lc;
-	}
+	check_bsq_end(bsq, bm, lc);
 }

@@ -6,11 +6,26 @@
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 13:03:10 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/30 20:56:09 by nveerara         ###   ########.fr       */
+/*   Updated: 2022/08/31 13:54:33 by nveerara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
+
+int	read_bsq(t_bsq *bsq)
+{
+	while (bsq->ret)
+	{
+		while (bsq->bi < bsq->ret)
+		{
+			if (g_read_bsq[bsq->step](bsq))
+				return (1);
+		}
+		bsq->ret = read(bsq->fd, bsq->buf, BUFF_SIZE);
+		bsq->bi = 0;
+	}
+	return (0);
+}
 
 void	read_file(char *av)
 {
@@ -24,18 +39,10 @@ void	read_file(char *av)
 		return ;
 	}
 	bsq.ret = read(bsq.fd, bsq.buf, BUFF_SIZE);
-	while (bsq.ret)
+	if (read_bsq(&bsq))
 	{
-		while (bsq.bi < bsq.ret)
-		{
-			if (g_read_bsq[bsq.step](&bsq))
-			{
-				print_error();
-				return ;
-			}
-		}
-		bsq.ret = read(bsq.fd, bsq.buf, BUFF_SIZE);
-		bsq.bi = 0;
+		print_error();
+		return ;
 	}
 	if (bsq.step != 6)
 	{

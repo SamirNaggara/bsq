@@ -6,7 +6,7 @@
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 13:05:07 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/30 20:57:10 by nveerara         ###   ########.fr       */
+/*   Updated: 2022/08/31 13:57:46 by nveerara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,24 @@ int	read_first_line_lines(t_bsq *bsq)
 	return (0);
 }
 
+int	read_first_line_lsize_end(t_bsq *bsq)
+{	
+	if (bsq->lsize != 0)
+	{
+		add_empt_obst(bsq);
+		bsq->l++;
+		bsq->step++;
+		bsq->bi++;
+		check_bsq(bsq);
+		if (bsq->l == bsq->lines)
+			bsq->step++;
+		else
+			init_new_line(bsq);
+		return (0);
+	}
+	return (1);
+}
+
 int	read_first_line_lsize(t_bsq *bsq)
 {
 	while (bsq->bi < bsq->ret)
@@ -67,22 +85,7 @@ int	read_first_line_lsize(t_bsq *bsq)
 			&& bsq->buf[bsq->bi] != '\n')
 			return (1);
 		if (bsq->buf[bsq->bi] == '\n')
-		{
-			if (bsq->lsize != 0)
-			{
-				add_empt_obst(bsq);
-				bsq->l++;
-				bsq->step++;
-				bsq->bi++;
-				check_bsq(bsq);
-				if (bsq->l == bsq->lines)
-					bsq->step++;
-				else
-					init_new_line(bsq);
-				return (0);
-			}
-			return (1);
-		}
+			return (read_first_line_lsize_end(bsq));
 		if (bsq->buf[bsq->bi] == bsq->empt)
 			add_empt_empty(bsq);
 		else
