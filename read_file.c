@@ -6,7 +6,7 @@
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 13:03:10 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/31 13:54:33 by nveerara         ###   ########.fr       */
+/*   Updated: 2022/08/31 14:24:34 by nveerara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,23 @@ void	read_file(char *av)
 	bsq.fd = open(av, O_RDONLY);
 	if (bsq.fd == -1)
 	{
-		print_error();
+		print_error(&bsq);
 		return ;
 	}
 	bsq.ret = read(bsq.fd, bsq.buf, BUFF_SIZE);
 	if (read_bsq(&bsq))
 	{
-		print_error();
+		print_error(&bsq);
 		return ;
 	}
 	if (bsq.step != 6)
 	{
-		print_error();
+		print_error(&bsq);
 		return ;
 	}
 	close(bsq.fd);
 	bsq.fd = open(av, O_RDONLY);
 	write_bsq(&bsq);
 	close(bsq.fd);
+	free_all(&bsq);
 }

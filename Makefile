@@ -6,7 +6,7 @@
 #    By: nveerara <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/16 10:56:07 by nveerara          #+#    #+#              #
-#    Updated: 2022/08/30 20:21:17 by nveerara         ###   ########.fr        #
+#    Updated: 2022/08/31 14:21:09 by nveerara         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRCS	=	BSQ.c \
 			error.c	\
 			write_bsq.c \
 			prep_first_line.c \
-			read_stdin.c
+			read_stdin.c \
+			free_all.c
 
 INC		=	includes/
 

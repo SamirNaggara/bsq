@@ -6,7 +6,7 @@
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 20:16:06 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/31 13:55:02 by nveerara         ###   ########.fr       */
+/*   Updated: 2022/08/31 14:22:55 by nveerara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,17 @@ void	read_stdin(void)
 	bsq.fdtmp = open("tmp", O_CREAT | O_WRONLY | O_TRUNC, S_IRWXU);
 	if (read_bsq_stdin(&bsq))
 	{
-		print_error();
+		print_error(&bsq);
 		return ;
 	}
 	if (bsq.step != 6)
 	{
-		print_error();
+		print_error(&bsq);
 		return ;
 	}
 	close(bsq.fdtmp);
 	bsq.fd = open("tmp", O_RDONLY);
 	write_bsq(&bsq);
 	close(bsq.fd);
+	free_all(&bsq);
 }

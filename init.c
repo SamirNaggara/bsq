@@ -6,7 +6,7 @@
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 15:28:59 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/30 20:55:30 by nveerara         ###   ########.fr       */
+/*   Updated: 2022/08/31 14:29:24 by nveerara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 void	init_bm(t_bsq *bsq)
 {
 	bsq->bm = (t_mem *)malloc(sizeof(t_mem));
+	if (bsq->bm == NULL)
+		exit(EXIT_FAILURE);
 	bsq->bm->next = NULL;
 	bsq->bm->prev = NULL;
 	bsq->bm->start = NULL;
@@ -49,6 +51,8 @@ void	init_new_line(t_bsq *bsq)
 	bsq->i = 0;
 	bm = bsq->bm;
 	bsq->bm->next = malloc(sizeof(t_mem));
+	if (bsq->bm->next == NULL)
+		exit(EXIT_FAILURE);
 	bsq->bm = bsq->bm->next;
 	bsq->bm->prev = bm;
 	bsq->bm->next = NULL;

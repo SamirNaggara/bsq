@@ -6,7 +6,7 @@
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 12:48:59 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/30 20:54:17 by nveerara         ###   ########.fr       */
+/*   Updated: 2022/08/31 14:32:37 by nveerara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	alloc_sqr_line(t_bsq *bsq)
 	int		i;
 
 	bsq->sqr_lc = malloc(sizeof(char) * bsq->bsqsize);
+	if (bsq->sqr_lc == NULL)
+		exit(EXIT_FAILURE);
 	i = 0;
 	while (i < bsq->bsqsize)
 	{

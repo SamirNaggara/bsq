@@ -6,7 +6,7 @@
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 13:04:10 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/30 20:55:49 by nveerara         ###   ########.fr       */
+/*   Updated: 2022/08/31 14:28:05 by nveerara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	add_empt_empty(t_bsq *bsq)
 	if (bsq->bm->start == NULL)
 	{
 		bsq->bm->start = malloc(sizeof(t_lmem));
+		if (bsq->bm->start == NULL)
+			exit(EXIT_FAILURE);
 		bsq->bml = bsq->bm->start;
 		bsq->bml->empt_start = bsq->i;
 		bsq->bml->next = NULL;
@@ -24,6 +26,8 @@ void	add_empt_empty(t_bsq *bsq)
 	if (bsq->bml == NULL)
 	{
 		bsq->pbml->next = malloc(sizeof(t_lmem));
+		if (bsq->pbml->next == NULL)
+			exit(EXIT_FAILURE);
 		bsq->bml = bsq->pbml->next;
 		bsq->bml->empt_start = bsq->i;
 		bsq->bml->next = NULL;
