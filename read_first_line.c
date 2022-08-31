@@ -6,7 +6,7 @@
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 13:05:07 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/31 13:57:46 by nveerara         ###   ########.fr       */
+/*   Updated: 2022/08/31 15:39:47 by nveerara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	read_first_line_char(t_bsq *bsq)
 	bsq->obst = bsq->first_line[bsq->fl_c - 2];
 	bsq->fill = bsq->first_line[bsq->fl_c - 1];
 	if (bsq->obst == bsq->fill || bsq->fill == bsq->empt
-		|| bsq->empt == bsq->obst)
+		|| bsq->empt == bsq->obst || bsq->lines == 0)
 		return (1);
 	bsq->step++;
 	init_bm(bsq);
