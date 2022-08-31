@@ -6,12 +6,12 @@
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 14:10:02 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/31 14:21:35 by nveerara         ###   ########.fr       */
+/*   Updated: 2022/08/31 22:36:40 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
-
+/*  Free tout, en parcournt toutes les structures une par unes  */
 void	free_lmem(t_lmem *mem)
 {
 	t_lmem	*tmp;

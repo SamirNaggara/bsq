@@ -6,12 +6,12 @@
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 13:03:39 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/31 16:23:39 by nveerara         ###   ########.fr       */
+/*   Updated: 2022/08/31 22:34:05 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
-
+/* Je suis le fichier principal ! Read c'est pour lire l'entree standard*/
 int	main(int ac, char **av)
 {
 	int	i;

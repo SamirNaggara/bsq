@@ -6,12 +6,12 @@
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 13:03:10 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/31 14:24:34 by nveerara         ###   ########.fr       */
+/*   Updated: 2022/08/31 22:35:43 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
-
+/* Lit le fichier*/
 int	read_bsq(t_bsq *bsq)
 {
 	while (bsq->ret)

@@ -6,10 +6,10 @@
 /*   By: nveerara <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 12:48:59 by nveerara          #+#    #+#             */
-/*   Updated: 2022/08/31 15:19:15 by nveerara         ###   ########.fr       */
+/*   Updated: 2022/08/31 22:40:37 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+/* Display*/
 #include "bsq.h"
 
 void	alloc_sqr_line(t_bsq *bsq)
